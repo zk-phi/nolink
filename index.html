@@ -1,0 +1,21 @@
+<head>
+  <style>
+body { font-family: serif; }
+textarea { width: 600px; }
+  </style>
+</head>
+<body>
+  <h1>リンク外し</h1>
+  <p><a href="https://ja.wikipedia.org/wiki/%E3%82%BC%E3%83%AD%E5%B9%85%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9">見えない文字 (ゼロ幅スペース)</a>を適宜挿入して、 URL や @hogehoge がリンクやメンションにならないようにします。対応している文字： @, #, $, .</p>
+  <textarea id="in" rows="4" placeholder="ここに入力"></textarea>
+  <p>↓をコピー＆ペーストしてください</p>
+  <pre id="out">(リンク破壊後のテキストがここに出ます)</pre>
+  <hr />
+  <a href="javascript: !prompt('↓をコピー＆ペースト', prompt('リンクを外したい文字列を入れてください').replace(/[.@#$]/g, '$&​'));">サクッと使えて便利な bookmarklet 版 (ブックマークに登録してネ)</a>
+  <script>
+document.getElementById("in").addEventListener("input", function (e) {
+  const res = e.target.value.replace(/[.@#$]/g, "$&​");
+  document.getElementById("out").innerHTML = res;
+});
+  </script>
+</body>
